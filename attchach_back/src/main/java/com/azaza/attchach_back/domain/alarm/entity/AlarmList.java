@@ -1,15 +1,14 @@
-package com.azaza.attchach_back.domain.member.entity;
+package com.azaza.attchach_back.domain.alarm.entity;
 
+import com.azaza.attchach_back.domain.member.entity.Member;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.ColumnDefault;
+import org.hibernate.annotations.DynamicInsert;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.util.Date;
 
 @Entity
@@ -17,18 +16,25 @@ import java.util.Date;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "alert_info")
+@DynamicInsert
+@Table(name = "alarm_list")
 public class AlarmList {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     @Column(name = "a_id", nullable = false)
-    private String a_id;
-    @Column(name = "u_id", nullable = false)
-    private String u_id;
+    private Integer a_id;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "u_id")
+    private Member member;
+
     @Column(name = "name", nullable = false)
     private String name;
+
     @Column(name = "time_taken")
     private String time_taken;
+
     @Column(name = "end_dt")
     private Date end_dt;
 
@@ -42,6 +48,7 @@ public class AlarmList {
     private String addr;
 
     @Column(name = "del_yn")
+    @ColumnDefault("n")
     private String del_yn;
 
     @Column(name = "visit_cnt")
@@ -49,6 +56,6 @@ public class AlarmList {
     private Integer visit_cnt;
 
     @Column(name = "end_yn")
-    @ColumnDefault("0")
+    @ColumnDefault("n")
     private Integer end_yn;
 }

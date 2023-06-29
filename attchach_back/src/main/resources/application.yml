@@ -6,10 +6,14 @@ logging:
 
 spring:
   datasource:
-    driver-class-name: org.postgresql.Driver
-    url: jdbc:postgresql://175.120.95.229:5432/postgres
-    username: achacha
-    password: achacha12#$
+#    driver-class-name: org.postgresql.Driver
+#    url: jdbc:postgresql://175.120.95.229:5432/postgres
+#    username: achacha
+#    password: achacha12#$
+
+    url: jdbc:h2:tcp://localhost/~/test;MODE=MySQL
+    username: sa
+    driver-class-name: org.h2.Driver
 
   jpa:
     open-in-view: false

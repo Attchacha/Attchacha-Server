@@ -1,14 +1,13 @@
 package com.azaza.attchach_back.domain.alart.entity;
 
+import com.azaza.attchach_back.domain.member.entity.AlarmList;
+import com.azaza.attchach_back.domain.member.entity.Member;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Getter
@@ -21,10 +20,12 @@ public class AlarmSuggestion {
     @Id
     @Column(name = "visit_id", nullable = false)
     private String visit_id;
+    @ManyToOne(fetch = FetchType.LAZY)
     @Column(name = "u_id", nullable = false)
-    private String u_id;
+    private Member u_id;
     @Column(name = "sug_addr", nullable = false)
     private String sug_addr;
+    @ManyToOne(fetch = FetchType.LAZY)
     @Column(name = "a_id", nullable = false)
-    private String a_id;
+    private AlarmList a_id;
 }

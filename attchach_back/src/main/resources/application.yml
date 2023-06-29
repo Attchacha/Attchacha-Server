@@ -5,6 +5,9 @@ logging:
     org.hiberante.type: trace
 
 spring:
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
   datasource:
     driver-class-name: org.postgresql.Driver
     url: jdbc:postgresql://175.120.95.229:5432/postgres

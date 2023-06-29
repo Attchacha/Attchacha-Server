@@ -18,8 +18,8 @@ public class MemberService {
         Member findMember = memberRepository.findById(uId)
                 .orElseThrow(() -> new IdNotFoundException("회원정보가 없습니다."));
         return LoginResponse.builder()
-                .id(findMember.getUId())
-                .username(findMember.getUNM())
+                .u_id(findMember.getUId())
+                .u_nm(findMember.getUNM())
                 .build();
     }
 }

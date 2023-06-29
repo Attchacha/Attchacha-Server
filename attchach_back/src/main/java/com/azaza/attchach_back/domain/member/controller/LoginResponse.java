@@ -5,8 +5,8 @@ import lombok.Builder;
 @Builder
 public class LoginResponse {
 
-    private String id;
+    private String u_id;
 
-    private String username;
+    private String u_nm;
 
 }

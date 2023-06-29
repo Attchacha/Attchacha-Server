@@ -43,6 +43,7 @@ public class AlarmController {
     @ResponseBody
     public List<Map<String, String>> getAlramList(HttpServletRequest request) throws Exception {
     	HashMap params = this.getParamToHashMap(request);
+    	
     	List<Map<String, String>> alarmList = new ArrayList<Map<String, String>>();
 
     	try {
@@ -50,7 +51,6 @@ public class AlarmController {
     	}catch(Exception e) {
 			e.printStackTrace();
 		}
-    	
     	return alarmList;
     }
     

@@ -21,7 +21,7 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class AlarmService {
 
-    private final AlarmRepository alarmRepository;
+    private final AlarmRepository alarmRepository; 
     private final MemberRepository memberRepository;
 
     public Integer save(AlarmRegisterRequest alarmRegisterRequest) {

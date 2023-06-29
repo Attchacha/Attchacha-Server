@@ -80,4 +80,11 @@ public class AlarmService {
                 .build();
         return alarmModifyResponse;
     }
+
+    public void completeAlarm(Integer a_id) {
+        AlarmList alarm = alarmRepository.findById(a_id)
+                .orElseThrow(() -> new IdNotFoundException("알림 정보가 없습니다."));
+        alarm.setEndYComplete();
+        alarmRepository.save(alarm);
+    }
 }

@@ -19,11 +19,17 @@ public class AlarmController {
         return ResponseEntity.ok(savedId);
     }
 
-//    @PutMapping("/alarm")
-//    public ResponseEntity<AlarmModifyResponse> modifyAlarm(@RequestBody AlarmModifyRequest alarmModifyRequest) {
-//        AlarmModifyResponse alarmModifyResponse = alarmService.put(alarmModifyRequest);
-//        return ResponseEntity.ok(alarmModifyResponse);
-//    }
+    @PostMapping("/alarm/{a_id}")
+    public ResponseEntity<Integer> completeAlarm(@PathVariable Integer a_id) {
+        alarmService.completeAlarm(a_id);
+        return ResponseEntity.ok(a_id);
+    }
+
+    @PutMapping("/alarm")
+    public ResponseEntity<AlarmModifyResponse> modifyAlarm(@RequestBody AlarmModifyRequest alarmModifyRequest) {
+        AlarmModifyResponse alarmModifyResponse = alarmService.put(alarmModifyRequest);
+        return ResponseEntity.ok(alarmModifyResponse);
+    }
 
     @DeleteMapping("/alarm")
     public ResponseEntity<AlarmModifyResponse> deleteAlarmYN(@RequestParam String a_id) {

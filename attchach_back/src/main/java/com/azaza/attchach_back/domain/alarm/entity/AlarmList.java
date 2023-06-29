@@ -63,8 +63,12 @@ public class AlarmList {
         this.del_yn = "y";
     }
 
-    public void setEndY() {
+    public void setEndYPass() {
         this.end_yn = 1;
+    }
+
+    public void setEndYComplete() {
+        this.end_yn = 2;
     }
 
 }

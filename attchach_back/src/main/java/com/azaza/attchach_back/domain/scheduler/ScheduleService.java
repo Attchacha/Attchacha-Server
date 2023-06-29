@@ -44,7 +44,7 @@ public class ScheduleService {
 		//repo update req
 		for(int i=0; i< newAlarmList.size(); i++) {
 			AlarmList alarm = newAlarmList.get(i);
-			alarm.setEndY();
+			alarm.setEndYPass();
 			alarmRepository.save(alarm);
 		}
 	}

@@ -21,7 +21,7 @@ public class AlarmNocheck implements Serializable {
     @Id
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "a_id")
-    private AlarmList a_id;
+    private AlarmList alarmList;
 
     @Id
     @ManyToOne(fetch = FetchType.LAZY)

@@ -1,14 +1,14 @@
 package com.azaza.attchach_back.domain.alarm.entity;
 
+import com.azaza.attchach_back.domain.member.entity.Member;
+import com.azaza.attchach_back.domain.alarm.entity.AlarmList;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.io.Serializable;
 
 @Entity
 @Getter
@@ -16,11 +16,15 @@ import javax.persistence.Table;
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "alarm_nocheck")
-public class AlarmNocheck {
+public class AlarmNocheck implements Serializable {
 
     @Id
-    @Column(name = "a_id", nullable = false)
-    private String a_id;
-    @Column(name = "u_id", nullable = false)
-    private String u_id;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "a_id")
+    private AlarmList alarmList;
+
+    @Id
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "u_id")
+    private Member u_id;
 }

@@ -87,4 +87,10 @@ public class AlarmService {
         alarm.setEndYComplete();
         alarmRepository.save(alarm);
     }
+
+    public AlarmModifyResponse findById(Integer a_id) {
+        AlarmList alarm = alarmRepository.findById(a_id)
+                .orElseThrow(() -> new IdNotFoundException("알림 정보가 없습니다."));
+        return toAlarmResponse(alarm);
+    }
 }

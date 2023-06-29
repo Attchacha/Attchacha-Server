@@ -56,6 +56,6 @@ public class AlarmList {
     private Integer visit_cnt;
 
     @Column(name = "end_yn")
-    @ColumnDefault("n")
+    @ColumnDefault("0")
     private Integer end_yn;
 }

@@ -9,6 +9,11 @@ import com.azaza.attchach_back.domain.member.entity.Member;
 import com.azaza.attchach_back.domain.member.repository.MemberRepository;
 import com.azaza.attchach_back.global.exception.IdNotFoundException;
 import lombok.RequiredArgsConstructor;
+
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 import org.springframework.stereotype.Service;
 
 
@@ -16,7 +21,7 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class AlarmService {
 
-    private final AlarmRepository alarmRepository;
+    private final AlarmRepository alarmRepository; 
     private final MemberRepository memberRepository;
 
     public Integer save(AlarmRegisterRequest alarmRegisterRequest) {
@@ -80,6 +85,11 @@ public class AlarmService {
                 .build();
         return alarmModifyResponse;
     }
+    
+    public List<Map<String, String>> getAlramList(HashMap params) throws Exception {
+    	List<Map<String, String>> alarmList = alarmRepository.getAlramList(params.get("userId").toString());
+		return alarmList;
+	}
 
     public void completeAlarm(Integer a_id) {
         AlarmList alarm = alarmRepository.findById(a_id)

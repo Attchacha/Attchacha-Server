@@ -2,6 +2,14 @@ package com.azaza.attchach_back.domain.alarm.controller;
 
 import com.azaza.attchach_back.domain.alarm.service.AlarmService;
 import lombok.RequiredArgsConstructor;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -42,5 +50,31 @@ public class AlarmController {
         AlarmModifyResponse alarmModifyResponse = alarmService.deleteYn(a_id);
         return ResponseEntity.ok(alarmModifyResponse);
     }
+    
+    @RequestMapping(value="/getAlramList", method = RequestMethod.POST)
+    @ResponseBody
+    public List<Map<String, String>> getAlramList(HttpServletRequest request) throws Exception {
+    	HashMap params = this.getParamToHashMap(request);
+    	
+    	List<Map<String, String>> alarmList = new ArrayList<Map<String, String>>();
+
+    	try {
+    		alarmList = alarmService.getAlramList(params);
+    	}catch(Exception e) {
+			e.printStackTrace();
+		}
+    	return alarmList;
+    }
+    
+    public HashMap getParamToHashMap(HttpServletRequest request) {
+		HashMap<String, String> returnMap = new HashMap();
+		Map<String, String[]> params = request.getParameterMap();
+		
+	    for (String key : params.keySet()) {
+			String[] value = params.get(key);
+			returnMap.put(key, value[0]);
+        }
+	    return returnMap;
+	}
 
 }

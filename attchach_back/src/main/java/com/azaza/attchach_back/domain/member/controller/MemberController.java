@@ -28,15 +28,18 @@ public class MemberController {
     @ResponseBody
     public String join(HttpServletRequest request, ModelMap model) throws Exception {
     	HashMap params = this.getParamToHashMap(request);
-    	String flagMsg = "";
+    	String msg = "비정상가입";
     	try {
-    		//flagMsg = memberService.checkUserInfo(params);
-    		memberService.join(params);
+    		int msgFlag = memberService.checkUserInfo(params);
+    		if(msgFlag==0) {
+    			memberService.join(params);
+    			msg = "정상가입";
+    		}
     	}catch(Exception e) {
 			e.printStackTrace();
 		}
     	
-    	return flagMsg;
+    	return msg;
     }
 
     @PostMapping("/login")

@@ -29,9 +29,13 @@ public class MemberService {
 				);
 	}
 	
-	public String checkUserInfo(HashMap params) throws Exception {
-		List<Map<String, Object>> msg = memberRepository.checkUserInfo(params.get("userId").toString());
-		return null;
+	public int checkUserInfo(HashMap params) throws Exception {
+		HashMap uid = memberRepository.checkUserInfo(params.get("userId").toString());
+		int msgFlag = 0;
+		if(params.get("userId").toString().equals(uid.get(0).toString())) {
+			msgFlag = 1;
+		}
+		return msgFlag;
 	}
 
     public LoginResponse login(String uId) {

@@ -23,6 +23,6 @@ public interface MemberRepository extends JpaRepository<Member, String> {
     		@Param("alarmCheck") String alarmCheck, 
     		@Param("alarmRadius") String alarmRadius);
     
-    @Query(value = "SELECT u_id FROM member_info WHERE u_id > :userId", nativeQuery = true)
-    public List<Map<String, Object>> checkUserInfo(@Param("userId") String userId);
+    @Query(value = "SELECT u_id FROM member_info WHERE u_id = :userId", nativeQuery = true)
+    public HashMap checkUserInfo(@Param("userId") String userId);
 }

@@ -9,6 +9,11 @@ import com.azaza.attchach_back.domain.member.entity.Member;
 import com.azaza.attchach_back.domain.member.repository.MemberRepository;
 import com.azaza.attchach_back.global.exception.IdNotFoundException;
 import lombok.RequiredArgsConstructor;
+
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 import org.springframework.stereotype.Service;
 
 
@@ -92,4 +97,9 @@ public class AlarmService {
                 .build();
         return alarmModifyResponse;
     }
+    
+    public List<Map<String, String>> getAlramList(HashMap params) throws Exception {
+    	List<Map<String, String>> alarmList = alarmRepository.getAlramList(params.get("userId").toString());
+		return alarmList;
+	}
 }

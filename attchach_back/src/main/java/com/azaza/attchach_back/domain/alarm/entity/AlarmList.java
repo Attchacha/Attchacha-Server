@@ -58,4 +58,17 @@ public class AlarmList {
     @Column(name = "end_yn")
     @ColumnDefault("0")
     private Integer end_yn;
+
+    public void setDeleteY(){
+        this.del_yn = "y";
+    }
+
+    public void setEndYPass() {
+        this.end_yn = 1;
+    }
+
+    public void setEndYComplete() {
+        this.end_yn = 2;
+    }
+
 }

@@ -64,20 +64,8 @@ public class AlarmService {
     public AlarmModifyResponse deleteYn(String a_id) {
         AlarmList alarm = alarmRepository.findById(Integer.parseInt(a_id))
                 .orElseThrow(() -> new IdNotFoundException("알림 정보가 없습니다."));
-        AlarmList alarmList = AlarmList.builder()
-                .a_id(alarm.getA_id())
-                .member(alarm.getMember())
-                .name(alarm.getName())
-                .end_dt(alarm.getEnd_dt())
-                .time_taken(alarm.getTime_taken())
-                .addr(alarm.getAddr())
-                .lat(alarm.getLat())
-                .lon(alarm.getLon())
-                .del_yn("y")
-                .end_yn(alarm.getEnd_yn())
-                .visit_cnt(alarm.getVisit_cnt())
-                .build();
-        AlarmList savedAlarm = alarmRepository.save(alarmList);
+        alarm.setDeleteY();
+        AlarmList savedAlarm = alarmRepository.save(alarm);
         return toAlarmResponse(savedAlarm);
     }
 
@@ -102,4 +90,17 @@ public class AlarmService {
     	List<Map<String, String>> alarmList = alarmRepository.getAlramList(params.get("userId").toString());
 		return alarmList;
 	}
+
+    public void completeAlarm(Integer a_id) {
+        AlarmList alarm = alarmRepository.findById(a_id)
+                .orElseThrow(() -> new IdNotFoundException("알림 정보가 없습니다."));
+        alarm.setEndYComplete();
+        alarmRepository.save(alarm);
+    }
+
+    public AlarmModifyResponse findById(Integer a_id) {
+        AlarmList alarm = alarmRepository.findById(a_id)
+                .orElseThrow(() -> new IdNotFoundException("알림 정보가 없습니다."));
+        return toAlarmResponse(alarm);
+    }
 }

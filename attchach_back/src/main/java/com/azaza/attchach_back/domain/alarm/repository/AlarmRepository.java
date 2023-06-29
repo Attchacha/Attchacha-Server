@@ -12,8 +12,9 @@ import java.util.Optional;
 
 public interface AlarmRepository extends JpaRepository<AlarmList, Integer> {
 	
-	@Query(value = "SELECT * FROM alarm_list WHERE u_id = :userId", nativeQuery = true)
+	 @Query(value = "SELECT * FROM alarm_list WHERE u_id = :userId", nativeQuery = true)
     public List<Map<String, String>> getAlramList(@Param("userId") String userId);
 	
-	
+    @Override
+    List<AlarmList> findAll();
 }

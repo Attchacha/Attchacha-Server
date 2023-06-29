@@ -1,5 +1,6 @@
 package com.azaza.attchach_back.domain.scheduler;
 
+import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.scheduling.annotation.Scheduled;
@@ -8,13 +9,14 @@ import org.springframework.stereotype.Component;
 import com.azaza.attchach_back.domain.member.service.MemberService;
 
 @Component
+@RequiredArgsConstructor
 public class BatchScheduler {
 	
 	private final ScheduleService scheduleService;
 	
 	Logger logger = LoggerFactory.getLogger(this.getClass());
     //10초마다 실행
-    @Scheduled(cron = "0 * * * * *")
+    @Scheduled(cron = "0 0/30 * * * *")
     public void updateSchedule() {
     	
     	try {

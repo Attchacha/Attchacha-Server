@@ -1,30 +1,30 @@
-package com.azaza.attchach_back.domain.alart.entity;
+package com.azaza.attchach_back.domain.alarm.entity;
 
-import com.azaza.attchach_back.domain.member.entity.AlarmList;
 import com.azaza.attchach_back.domain.member.entity.Member;
+import com.azaza.attchach_back.domain.alarm.entity.AlarmList;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.util.Date;
+import java.io.Serializable;
 
 @Entity
 @Getter
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "alert_info")
-public class AlarmNocheck {
+@Table(name = "alarm_nocheck")
+public class AlarmNocheck implements Serializable {
 
     @Id
     @ManyToOne(fetch = FetchType.LAZY)
-    @Column(name = "a_id", nullable = false)
+    @JoinColumn(name = "a_id")
     private AlarmList a_id;
 
     @Id
     @ManyToOne(fetch = FetchType.LAZY)
-    @Column(name = "u_id", nullable = false)
+    @JoinColumn(name = "u_id")
     private Member u_id;
 }

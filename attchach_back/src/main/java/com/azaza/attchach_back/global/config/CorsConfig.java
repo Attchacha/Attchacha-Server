@@ -2,16 +2,16 @@ package com.azaza.attchach_back.global.config;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupport;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 
 @Configuration
-public class CorsConfig extends WebMvcConfigurationSupport {
+public class CorsConfig implements WebMvcConfigurer {
 
     @Override
-    protected void addCorsMappings(CorsRegistry registry) {
-        super.addCorsMappings(registry);
+    public void addCorsMappings(CorsRegistry registry) {
         registry.addMapping("/**")
-                .allowedOrigins("*");
+                .allowedOrigins("http://localhost:3000")
+                .allowCredentials(true);
     }
 }

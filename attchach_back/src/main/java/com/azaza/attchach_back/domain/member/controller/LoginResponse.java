@@ -1,7 +1,9 @@
 package com.azaza.attchach_back.domain.member.controller;
 
 import lombok.Builder;
+import lombok.Getter;
 
+@Getter
 @Builder
 public class LoginResponse {
 

@@ -1,7 +1,7 @@
-package com.azaza.attchach_back.domain.alart.entity;
+package com.azaza.attchach_back.domain.alarm.entity;
 
-import com.azaza.attchach_back.domain.member.entity.AlarmList;
 import com.azaza.attchach_back.domain.member.entity.Member;
+import com.azaza.attchach_back.domain.alarm.entity.AlarmList;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -20,12 +20,15 @@ public class AlarmSuggestion {
     @Id
     @Column(name = "visit_id", nullable = false)
     private String visit_id;
+
     @ManyToOne(fetch = FetchType.LAZY)
-    @Column(name = "u_id", nullable = false)
-    private Member u_id;
+    @JoinColumn(name = "u_id")
+    private Member member;
+
     @Column(name = "sug_addr", nullable = false)
     private String sug_addr;
+
     @ManyToOne(fetch = FetchType.LAZY)
-    @Column(name = "a_id", nullable = false)
-    private AlarmList a_id;
+    @JoinColumn(name = "a_id")
+    private AlarmList alarmList;
 }

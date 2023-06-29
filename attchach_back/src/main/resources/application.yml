@@ -5,15 +5,14 @@ logging:
     org.hiberante.type: trace
 
 spring:
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
   datasource:
-#    driver-class-name: org.postgresql.Driver
-#    url: jdbc:postgresql://175.120.95.229:5432/postgres
-#    username: achacha
-#    password: achacha12#$
-
-    url: jdbc:h2:tcp://localhost/~/test;MODE=MySQL
-    username: sa
-    driver-class-name: org.h2.Driver
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://175.120.95.229:5432/postgres
+    username: achacha
+    password: achacha12#$
 
   jpa:
     open-in-view: false

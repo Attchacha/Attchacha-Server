@@ -6,7 +6,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;
 
-public interface AlarmRepository extends JpaRepository<AlarmList, String> {
+public interface AlarmRepository extends JpaRepository<AlarmList, Integer> {
 
-    Optional<AlarmList> findByA_id(Integer a_id);
 }

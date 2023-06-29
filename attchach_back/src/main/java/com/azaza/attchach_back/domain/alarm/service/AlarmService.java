@@ -57,7 +57,7 @@ public class AlarmService {
     }
 
     public AlarmModifyResponse deleteYn(String a_id) {
-        AlarmList alarm = alarmRepository.findByA_id(Integer.parseInt(a_id))
+        AlarmList alarm = alarmRepository.findById(Integer.parseInt(a_id))
                 .orElseThrow(() -> new IdNotFoundException("알림 정보가 없습니다."));
         AlarmList alarmList = AlarmList.builder()
                 .a_id(alarm.getA_id())

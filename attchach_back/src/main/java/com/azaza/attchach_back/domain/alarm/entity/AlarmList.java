@@ -25,7 +25,7 @@ public class AlarmList {
     @Column(name = "a_id", nullable = false)
     private Integer a_id;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "u_id")
     private Member member;
 

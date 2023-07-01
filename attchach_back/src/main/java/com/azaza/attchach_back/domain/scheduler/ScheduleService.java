@@ -36,7 +36,7 @@ public class ScheduleService {
 					Integer.parseInt(alramList.get(i).getEnd_dt().toString().substring(5, 7)),
 					Integer.parseInt(alramList.get(i).getEnd_dt().toString().substring(8, 10)));
 			System.out.println(serverDate.toString()+" vs " +alramDate.toString());
-			if(serverDate.isBefore(alramDate)==false) {//서버시간보다 알람시간이 더클때
+			if(alramDate.isBefore(serverDate)) {//서버시간보다 알람시간이 더클때
 				newAlarmList.add(alramList.get(i));
 			}
 		}
